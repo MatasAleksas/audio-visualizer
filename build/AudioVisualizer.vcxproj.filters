@@ -7,12 +7,30 @@
     <ClCompile Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\audio\AudioCapture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\processing\FFTProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\matas\PersonalProjects\audio-visualizer\external\kissfft\kiss_fft.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\audio\AudioCapture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\audio\RingBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\processing\FFTProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\external\kissfft\kiss_fft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\external\kissfft\kiss_fft_log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\external\kissfft\_kiss_fft_guts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3879d0cc-276f-4815-8f0d-76afaeb8540e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../external/kissfft/_kiss_fft_guts.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../external/kissfft/kiss_fft.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../external/kissfft/kiss_fft.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../external/kissfft/kiss_fft_log.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/processing/FFTProcessor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/processing/FFTProcessor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/ALL_BUILD.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../build/ALL_BUILD.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioCapture.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioCapture.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/Cl.items.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/Cl.items.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CustomBuild.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/CustomBuild.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.secondary.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/AudioVisualizer.tlog/link.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/main.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.dir/Release/main.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/AudioVisualizer.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/../build/AudioVisualizer.vcxproj.filters" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../build/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/CMakeFiles/4.1.2-msvc8/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../build/CMakeFiles/4.1.2-msvc8/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/CMakeFiles/4.1.2-msvc8/CompilerIdCXX/CompilerIdCXX.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../build/CMakeFiles/4.1.2-msvc8/CompilerIdCXX/CompilerIdCXX.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/CMakeFiles/4.1.2-msvc8/CompilerIdCXX/Debug/CMakeCXXCompilerId.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../build/CMakeFiles/4.1.2-msvc8/CompilerIdCXX/Debug/CMakeCXXCompilerId.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../build/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/CMakeFiles/generate.stamp.depend" beforeDir="false" afterPath="$PROJECT_DIR$/../build/CMakeFiles/generate.stamp.depend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/Release/AudioVisualizer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../build/Release/AudioVisualizer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/ZERO_CHECK.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../build/ZERO_CHECK.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/x64/Release/ALL_BUILD/ALL_BUILD.tlog/CustomBuild.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/x64/Release/ALL_BUILD/ALL_BUILD.tlog/CustomBuild.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/x64/Release/ZERO_CHECK/ZERO_CHECK.tlog/CustomBuild.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/../build/x64/Release/ZERO_CHECK/ZERO_CHECK.tlog/CustomBuild.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="1rEoest3" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2026" />
+    <option name="minorVersion" value="1.1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3D2mbTA2j7B1rsY2Gdaa3JPh7k0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.first.attach.projects": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <module name="" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3879d0cc-276f-4815-8f0d-76afaeb8540e" name="Changes" comment="" />
+      <created>1777488609889</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777488609889</updated>
+      <workItem from="1777488610915" duration="317000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

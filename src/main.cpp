@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -5,9 +6,11 @@
 #include <thread>
 #include <csignal>
 #include <atomic>
+#include <windows.h>
 
 #include "./audio/RingBuffer.h"
 #include "./audio/AudioCapture.h"
+#include "processing/FFTProcessor.h"
 
 // global flag for clean shutdown on ctrl+c
 std::atomic<bool> g_running{true};
@@ -20,86 +23,104 @@ void signalHandler(int signal) {
     }
 }
 
-float computeRMS(const std::vector<float> &samples, size_t count) {
-    if (count == 0) {
-        return 0.0f;
-    }
-
-    float sumSquares = 0.0f;
-    for (size_t i = 0; i < count; i++) {
-        sumSquares += samples[i] * samples[i];
-    }
-    return std::sqrt(sumSquares / static_cast<float>(count));
+void setCursorToTop() {
+    COORD topLeft = {0, 0};
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), topLeft);
 }
 
-void printMeter(float rms, int width = 50) {
-    // convert RMS to a visual level
-    // RMS of normal music is typically 0.01-0.3
-    // scale it up for display
+void hideCursor() {
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO info;
+    info.dwSize = 1;
+    info.bVisible = FALSE;
+    SetConsoleCursorInfo(console, &info);
+}
 
-    float level = rms * 5.0f;
-    if (level > 1.0f) {
-        level = 1.0f;
-    }
+void printBars(const std::vector<float>& bars, int barHeight = 20) {
+    setCursorToTop();
 
-    int filled = static_cast<int>(level * width);
+    int numBars = (int)bars.size();
 
-    std::cout << "\r["; // carriage return without a newline, overwrites current lines instead of printing new ones
-    for (int i = 0; i < width; i++) {
-        if (i < filled) {
-            std::cout << "#";
-        } else {
-            std::cout << " ";
+    // build the entire frame as one string, then output at once
+    std::string frame;
+    frame.reserve(numBars * 4 * barHeight);
+
+    for (int row = barHeight; row >= 1; row--) {
+        float threshold = (float)row / barHeight;
+
+        for (int i = 0; i < numBars; i++) {
+            if (bars[i] >= threshold) {
+                frame += "##";
+            } else {
+                frame += "  ";
+            }
+            frame += ' ';  // space between bars
         }
+        frame += '\n';
     }
-    std::cout << "] " << rms << " " << std::flush;
+
+    // base line
+    for (int i = 0; i < numBars; i++) {
+        frame += "---";
+    }
+    frame += '\n';
+
+    std::cout << frame << std::flush;
 }
 
 int main() {
+    hideCursor();
+
     std::signal(SIGINT, signalHandler);
 
-    std::cout << "Audio Visualizer - Part 1" << std::endl;
+    std::cout << "Audio Visualizer - Part 2" << std::endl;
     std::cout << "Press CTRL+C to exit" << std::endl;
     std::cout << std::endl;
 
     // ring buffer: 48000 samples = 1 second at 48kHz
     RingBuffer<float> ringBuffer(48000);
 
+    // start audio capture
     AudioCapture capture(ringBuffer);
-
     if (!capture.start()) {
         std::cerr << "Failed to start capture" << std::endl;
         return 1;
     }
 
-    std::cout << "Listening... play audio..." << std::endl;
-    std::cout << std::endl;
+    // FFT setup
+    const uint32_t FFT_SIZE = 2048;
+    const uint32_t NUM_BARS = 32;
+    FFTProcessor fft(FFT_SIZE, capture.getSampleRate(), NUM_BARS);
 
-    // read buffer for pulling samples from the ring buffer
-    // 4096 is roughly 85ms of audio at 48kHz, its enough samples to get a stable reading
-    std::vector<float> readBuffer(4096);
+    // buffer to read samples from ring buffer
+    std::vector<float> sampleBuffer(FFT_SIZE);
+
+    std::cout << "Listening... play audio..." << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 
     while (g_running.load()) {
-        // read available samples (while consuming)
-        size_t samplesRead = ringBuffer.read(readBuffer.data(), readBuffer.size());
+        // use peek so we can do overlapping windows
+        size_t available = ringBuffer.availibleSamples();
 
-        if (samplesRead > 0) {
-            float rms = computeRMS(readBuffer, samplesRead);
-            printMeter(rms);
+        if (available >= FFT_SIZE) {
+            // read FFT_SIZE samples, consuming them
+            ringBuffer.read(sampleBuffer.data(), FFT_SIZE);
+
+            // process through FFT
+            fft.process(sampleBuffer.data(), FFT_SIZE);
+
+            // display
+            printBars(fft.getBars());
         }
 
-        // update roughly 30 times/second
-        // fast enough to see responsive movement, slow enough to not waste CPU
-        // when switching to renderer, this sleep goes away and is replaced with vsync
+        // 30 fps
         std::this_thread::sleep_for(std::chrono::milliseconds(33));
     }
 
-    std::cout << std::endl << std::endl;
     std::cout << "Shutting down..." << std::endl;
-
     capture.stop();
-
     std::cout << "Audio capture shut down" << std::endl;
+
     return 0;
 }
 
