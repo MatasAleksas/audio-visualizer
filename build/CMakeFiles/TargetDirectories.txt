@@ -1,0 +1,3 @@
+C:/Users/matas/PersonalProjects/audio-visualizer/build/CMakeFiles/AudioVisualizer.dir
+C:/Users/matas/PersonalProjects/audio-visualizer/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/matas/PersonalProjects/audio-visualizer/build/CMakeFiles/ZERO_CHECK.dir
