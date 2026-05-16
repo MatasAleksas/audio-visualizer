@@ -95,36 +95,24 @@ void FFTProcessor::process(const float* samples, size_t count) {
     // run FFT
     kiss_fft(m_fftConfig, m_fftInput.data(), m_fftOutput.data());
 
-    // DEBUG: Check if FFT is actually producing output
-    float maxFFT = 0.0f;
-    for (uint32_t i = 0; i < m_fftSize / 2; i++) {
-        float mag = sqrtf(m_fftOutput[i].r * m_fftOutput[i].r + m_fftOutput[i].i * m_fftOutput[i].i);
-        if (mag > maxFFT) maxFFT = mag;
-    }
-    std::cout << "FFT config: " << (m_fftConfig ? "valid" : "NULL") << "     \n";
-    std::cout << "Max FFT magnitude: " << maxFFT << "     \n";
-
     // compute magnitude for each bar
     for (uint32_t i = 0; i < m_numBars; i++) {
-        float sum = 0.0f;
-        uint32_t count = 0;
-
+        // peak magnitude in this band, not average — averaging dilutes tones
+        // because high-freq bands cover many bins, most of which are silent
+        float peak = 0.0f;
         for (uint32_t bin = m_barBinStart[i]; bin <= m_barBinEnd[i]; bin++) {
             float real = m_fftOutput[bin].r;
             float imag = m_fftOutput[bin].i;
-            float magnitude = sqrt(real * real + imag * imag);
-            sum += magnitude;
-            count++;
+            float magnitude = sqrtf(real * real + imag * imag);
+            if (magnitude > peak) peak = magnitude;
         }
 
-        // average magnitude for this bar
-        float avgMagnitude = (count > 0) ? (sum / count) : 0.0f;
+        // normalize: Hann-windowed FFT puts a 0 dBFS tone at ~fftSize/4
+        float avgMagnitude = peak / (m_fftSize * 0.25f);
 
-        // normalize by FFT size
-        avgMagnitude /= m_fftSize;
-
-        // boost higher bars to compensate for natural energy rolloff
-        float weight = 1.0f + (float)i / (float)m_numBars * 3.0f;
+        // boost higher bars slightly to compensate for natural energy rolloff
+        // (kept gentle — too much boost lifts the noise floor visibly)
+        float weight = 1.0f + (float)i / (float)m_numBars * 1.0f;
         avgMagnitude *= weight;
 
         // convert to dB
@@ -138,6 +126,13 @@ void FFTProcessor::process(const float* samples, size_t count) {
         // normalize dB to 0.0 - 1.0 range
         float normalized = (dB - m_minDb) / (0.0f - m_minDb);
         normalized = std::clamp(normalized, 0.0f, 1.0f);
+
+        // soft noise gate: rescale so [gate..1] -> [0..1], anything below the gate -> 0
+        if (normalized < m_noiseGate) {
+            normalized = 0.0f;
+        } else {
+            normalized = (normalized - m_noiseGate) / (1.0f - m_noiseGate);
+        }
 
         // smoothing, instant attack, slow decay
         if (normalized > m_prevBars[i]) {

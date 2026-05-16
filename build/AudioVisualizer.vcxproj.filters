@@ -10,7 +10,13 @@
     <ClCompile Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\processing\FFTProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\rendering\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\matas\PersonalProjects\audio-visualizer\external\kissfft\kiss_fft.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\matas\PersonalProjects\audio-visualizer\external\glad\src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -22,6 +28,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\processing\FFTProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\src\rendering\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\matas\PersonalProjects\audio-visualizer\external\kissfft\kiss_fft.h">

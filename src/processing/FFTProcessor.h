@@ -42,7 +42,10 @@ private:
     std::vector<float> m_prevBars;
 
     // minimum dB, below this is silence
-    float m_minDb = -100.0f;
+    float m_minDb = -70.0f;
+
+    // hard noise gate: normalized values below this snap to 0
+    float m_noiseGate = 0.15f;
 
     // smoothing decay factor
     float m_decay = 0.9f;

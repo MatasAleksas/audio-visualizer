@@ -11,21 +11,31 @@ add_executable(AudioVisualizer
         src/audio/RingBuffer.h
         src/processing/FFTProcessor.h
         src/processing/FFTProcessor.cpp
+        src/rendering/Renderer.h
+        src/rendering/Renderer.cpp
         external/kissfft/kiss_fft.c
         external/kissfft/kiss_fft.h
         external/kissfft/kiss_fft_log.h
         external/kissfft/_kiss_fft_guts.h
+        external/glad/src/glad.c
 )
 
-# WASAPI and COM require these Windows libraries
-target_link_libraries(AudioVisualizer PRIVATE
-        ole32
-        uuid
-        propsys
-)
-
-# make sure we can find our headers
+# header search paths
 target_include_directories(AudioVisualizer PRIVATE
         src
         external/kissfft
+        external/glad/include
+        external/glfw/include
+)
+
+# link libraries
+target_link_libraries(AudioVisualizer PRIVATE
+        # WASAPI / COM
+        ole32
+        uuid
+        propsys
+        # OpenGL on Windows
+        opengl32
+        # prebuilt GLFW static library
+        ${CMAKE_SOURCE_DIR}/external/glfw/lib/glfw3.lib
 )
