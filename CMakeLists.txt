@@ -11,6 +11,8 @@ add_executable(AudioVisualizer
         src/audio/RingBuffer.h
         src/processing/FFTProcessor.h
         src/processing/FFTProcessor.cpp
+        src/processing/BeatDetector.h
+        src/processing/BeatDetector.cpp
         src/rendering/Renderer.h
         src/rendering/Renderer.cpp
         external/kissfft/kiss_fft.c

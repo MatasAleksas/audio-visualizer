@@ -7,6 +7,7 @@
 #include "./audio/RingBuffer.h"
 #include "./audio/AudioCapture.h"
 #include "processing/FFTProcessor.h"
+#include "processing/BeatDetector.h"
 #include "rendering/Renderer.h"
 
 int main(int /*argc*/, char* /*argv*/[]) {
@@ -24,6 +25,7 @@ int main(int /*argc*/, char* /*argv*/[]) {
     const uint32_t FFT_SIZE = 2048;
     const uint32_t NUM_BARS = 64;
     FFTProcessor fft(FFT_SIZE, capture.getSampleRate(), NUM_BARS);
+    BeatDetector beat;
 
     Renderer renderer;
     if (!renderer.init("Audio Visualizer", 1280, 540)) {
@@ -38,14 +40,20 @@ int main(int /*argc*/, char* /*argv*/[]) {
     while (running) {
         running = renderer.pollEvents();
 
+        bool beatThisFrame = false;
+        float beatStrength = 0.0f;
+
         size_t available = ringBuffer.availibleSamples();
         if (available >= FFT_SIZE) {
             ringBuffer.read(sampleBuffer.data(), FFT_SIZE);
             fft.process(sampleBuffer.data(), FFT_SIZE);
             displayBars = fft.getBars();
+
+            beatThisFrame = beat.update(displayBars);
+            beatStrength  = beat.beatStrength();
         }
 
-        renderer.drawFrame(displayBars);
+        renderer.drawFrame(displayBars, beatThisFrame, beatStrength);
         // vsync paces us; no manual sleep needed
     }
 

@@ -1,6 +1,7 @@
 C:\Users\matas\PersonalProjects\audio-visualizer\src\main.cpp;C:\Users\matas\PersonalProjects\audio-visualizer\build\AudioVisualizer.dir\Release\main.obj
 C:\Users\matas\PersonalProjects\audio-visualizer\src\audio\AudioCapture.cpp;C:\Users\matas\PersonalProjects\audio-visualizer\build\AudioVisualizer.dir\Release\AudioCapture.obj
 C:\Users\matas\PersonalProjects\audio-visualizer\src\processing\FFTProcessor.cpp;C:\Users\matas\PersonalProjects\audio-visualizer\build\AudioVisualizer.dir\Release\FFTProcessor.obj
+C:\Users\matas\PersonalProjects\audio-visualizer\src\processing\BeatDetector.cpp;C:\Users\matas\PersonalProjects\audio-visualizer\build\AudioVisualizer.dir\Release\BeatDetector.obj
 C:\Users\matas\PersonalProjects\audio-visualizer\src\rendering\Renderer.cpp;C:\Users\matas\PersonalProjects\audio-visualizer\build\AudioVisualizer.dir\Release\Renderer.obj
 C:\Users\matas\PersonalProjects\audio-visualizer\external\kissfft\kiss_fft.c;C:\Users\matas\PersonalProjects\audio-visualizer\build\AudioVisualizer.dir\Release\kiss_fft.obj
 C:\Users\matas\PersonalProjects\audio-visualizer\external\glad\src\glad.c;C:\Users\matas\PersonalProjects\audio-visualizer\build\AudioVisualizer.dir\Release\glad.obj

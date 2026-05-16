@@ -346,9 +346,18 @@ void Renderer::updatePeaks(const std::vector<float>& bars) {
     }
 }
 
-void Renderer::drawFrame(const std::vector<float>& bars) {
+void Renderer::drawFrame(const std::vector<float>& bars,
+                         bool beatThisFrame, float beatStrength) {
     if (bars.empty()) return;
     updatePeaks(bars);
+
+    // beat pulse: jump on beat, decay each frame
+    if (beatThisFrame) {
+        float bump = 0.6f + std::clamp(beatStrength, 0.0f, 1.5f) * 0.5f;
+        m_beatPulse = std::min(1.5f, m_beatPulse + bump);
+    }
+    m_beatPulse *= 0.88f;
+    if (m_beatPulse < 0.001f) m_beatPulse = 0.0f;
 
     // ---- pass 1: draw bars into scene FBO ----
     glBindFramebuffer(GL_FRAMEBUFFER, m_sceneFBO);
@@ -473,7 +482,9 @@ void Renderer::drawFrame(const std::vector<float>& bars) {
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, m_blurTex[srcIdx]);
     glUniform1i(glGetUniformLocation(m_compositeProgram, "uBloom"), 1);
-    glUniform1f(glGetUniformLocation(m_compositeProgram, "uIntensity"), 2.2f);
+    // base intensity + extra punch on beats
+    glUniform1f(glGetUniformLocation(m_compositeProgram, "uIntensity"),
+                2.2f + m_beatPulse * 2.5f);
     glBindVertexArray(m_fsVao);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 

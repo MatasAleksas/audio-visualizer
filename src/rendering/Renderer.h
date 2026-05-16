@@ -18,8 +18,11 @@ public:
     // returns false if user closed the window
     bool pollEvents();
 
-    // draw a frame from current bar magnitudes (0..1)
-    void drawFrame(const std::vector<float>& bars);
+    // draw a frame from current bar magnitudes (0..1).
+    // beatThisFrame=true triggers a visible pulse this frame.
+    void drawFrame(const std::vector<float>& bars,
+                   bool beatThisFrame = false,
+                   float beatStrength = 0.0f);
 
 private:
     void updatePeaks(const std::vector<float>& bars);
@@ -38,6 +41,9 @@ private:
     std::vector<float> m_peakVelocity;
 
     double m_lastTime = 0.0;
+
+    // beat-driven pulse, decays each frame
+    float m_beatPulse = 0.0f;
 
     // bar shader (pixel-space verts, per-vertex color)
     GLuint m_barProgram = 0;
